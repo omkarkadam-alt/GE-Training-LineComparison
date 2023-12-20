@@ -1,4 +1,6 @@
 import java.util.Scanner;
+
+import javax.sound.sampled.Line;
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Welcome to Line Comparison Computation");
@@ -30,12 +32,21 @@ public class App {
 
         String Line1 = String.valueOf(line1Length);
         String Line2 = String.valueOf(line2Length);
-
+        
+        int comparison = Line1.compareTo(Line2);
+        
         if(Line1.equals(Line2)){
             System.out.println("Length of both the lines is equal.");
         }
         else{
             System.out.println("Length of both the lines is not equal.");
+
+            if(comparison > 0){
+                System.out.println("Line 1 is greater than Line 2.");
+            }
+            else{
+                System.out.println("Line 1 is smaller than Line 2");
+            }
         }
         
         scannerObject.close();
