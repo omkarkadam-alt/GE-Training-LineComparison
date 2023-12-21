@@ -1,41 +1,41 @@
 import java.util.Scanner;
 
-import javax.sound.sampled.Line;
 public class App {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Welcome to Line Comparison Computation");
 
-        Scanner scannerObject = new Scanner(System.in);
+    static Scanner scannerObject = new Scanner(System.in);
 
-        System.out.println("Enter coordinates for Point 1 of Line1: ");
+    public static Line getLine() {
+        System.out.println("Enter the start point of line: ");
         double x1 = scannerObject.nextDouble();
         double y1 = scannerObject.nextDouble();
 
-        System.out.println("Enter coordinates for Point 2 of Line1: ");
+        System.out.println("Enter the end point of line: ");
         double x2 = scannerObject.nextDouble();
         double y2 = scannerObject.nextDouble();
 
-        double line1Length = Math.pow((Math.pow(x2 -  x1, 2) + Math.pow(y2 - y1, 2)), 0.5);
-        System.out.println("Length of the line1: " + line1Length);
+        Line line = new Line(new Point(x1, y1), new Point(x2, y2));
 
-        System.out.println("Enter coordinates for Point 1 of Line2: ");
-        double x3 = scannerObject.nextDouble();
-        double y3 = scannerObject.nextDouble();
+        return line;
+    }
 
-        System.out.println("Enter coordinates for Point 2 of Line2: ");
-        double x4 = scannerObject.nextDouble();
-        double y4 = scannerObject.nextDouble();
+    public static void main(String[] args) throws Exception {
+        System.out.println("Welcome to Line Comparison Computation");
 
+        System.out.println("Line 1: ");
+        Line line1 = getLine();
+
+        System.out.println("Length of the line1: " + line1.length);
+
+        System.out.println("Line 2: ");
+        Line line2 = getLine();
+
+        System.out.println("Length of the line2: " + line2.length);
+
+        boolean isLineEqual = line1.equals(line2);
         
-        double line2Length = Math.pow((Math.pow(x4 -  x3, 2) + Math.pow(y4 - y3, 2)), 0.5);
-        System.out.println("Length of the line2: " + line2Length);
-
-        String Line1 = String.valueOf(line1Length);
-        String Line2 = String.valueOf(line2Length);
+        int comparison = line1.compareTo(line2);
         
-        int comparison = Line1.compareTo(Line2);
-        
-        if(Line1.equals(Line2)){
+        if(isLineEqual){
             System.out.println("Length of both the lines is equal.");
         }
         else{
